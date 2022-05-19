@@ -1,0 +1,27 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:StoragePlanMessageResponse xmlns:ns="http://server.webservice.wms7.daifuku.co.jp">
+         <ns:return xsi:type="ax21:WMS7Response" xmlns:ax21="http://msg.webservice.wms7.daifuku.co.jp/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ax21:messageHeader xsi:type="ax21:SPMHeader" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+               <ax21:msgId>SPM_20201109000001001</ax21:msgId>
+               <ax21:sapDocumentNo>SAP1</ax21:sapDocumentNo>
+            </ax21:messageHeader>
+            <ax21:responseMessageHeader xsi:type="ax21:ResponseMessageHeader">
+               <ax21:responseCode>0000</ax21:responseCode>
+               <ax21:responseDescription>Success</ax21:responseDescription>
+            </ax21:responseMessageHeader>
+            <ax21:responseMessages xsi:type="ax21:ResponseMessage">
+               <ax21:responseCode>0000</ax21:responseCode>
+               <ax21:responseDescription>Success</ax21:responseDescription>
+               <ax21:sequence>1</ax21:sequence>
+            </ax21:responseMessages>
+            <ax21:responseMessages xsi:type="ax21:ResponseMessage">
+               <ax21:responseCode>0000</ax21:responseCode>
+               <ax21:responseDescription>Success</ax21:responseDescription>
+               <ax21:sequence>2</ax21:sequence>
+            </ax21:responseMessages>
+         </ns:return>
+      </ns:StoragePlanMessageResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
