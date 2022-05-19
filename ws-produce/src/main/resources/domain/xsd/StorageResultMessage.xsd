@@ -1,0 +1,87 @@
+<xs:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		   xmlns:tns="urn:sap-com:document:sap:soap:functions:mc-style"
+		   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		   targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style"
+		   xmlns:n1="urn:sap-com:document:sap:rfc:functions"
+		   elementFormDefault="qualified">
+	
+	<xsd:element name="ZStorageResultMessage">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="StorageResultMsgRequest"
+					type="tns:ZwsStSrmRequest" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ZwsStSrmRequest">
+		<xsd:sequence>
+			<xsd:element name="MessageHeader"
+				type="tns:ZwsStMessageHeader" />
+			<xsd:element name="Srm" type="tns:ZwsTtSrm" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ZwsStMessageHeader">
+		<xsd:sequence>
+			<xsd:element name="MsgId" type="n0:string" />
+			<xsd:element name="SapDocNo" type="n0:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ZwsTtSrm">
+		<xsd:sequence>
+			<xsd:element name="item" type="tns:ZwsStSrm"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ZwsStSrm">
+		<xsd:sequence>
+			<xsd:element name="Sequence" type="xsd:int" />
+			<xsd:element name="SapDocumentLineNo" type="n0:string" />
+			<xsd:element name="HU" type="xsd:int" />
+			<xsd:element name="ItemCode" type="n0:string" />
+			<xsd:element name="ResultQty" type="xsd:int" />
+			<xsd:element name="Uom" type="n0:string" />
+			<xsd:element name="UserId" type="n0:string" />
+			<xsd:element name="ResultDate" type="n0:date10" />
+			<xsd:element name="ResultTime" type="n0:time" />
+			<xsd:element name="LocationNo" type="n0:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="ZStorageResultMessageResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="StorageResultMsgResponse"
+					type="tns:ZwsStSrmResponse" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ZwsStSrmResponse">
+		<xsd:sequence>
+			<xsd:element name="MessageHeader"
+				type="tns:ZwsStResultMessageHeader" />
+			<xsd:element name="ResponseMessageHeader"
+				type="tns:ZwsStResponseMessageHeader" />
+			<xsd:element name="ResponseMessage"
+				type="tns:ZwsTtResponseMessage" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ZwsStResultMessageHeader">
+		<xsd:sequence>
+			<xsd:element name="MsgId" type="n0:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ZwsStResponseMessageHeader">
+		<xsd:sequence>
+			<xsd:element name="ResponseCode" type="n0:string" />
+			<xsd:element name="ResponseDescription"
+				type="n0:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ZwsTtResponseMessage">
+		<xsd:sequence>
+			<xsd:element name="item"
+				type="tns:ZwsStResponseMessage" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xs:schema>

@@ -1,0 +1,158 @@
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:ns1="urn:sap-com:document:sap:soap:functions:mc-style"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:tns="urn:sap-com:document:sap:soap:functions:mc-style"
+	targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+	<script />
+	<script />
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified"
+			targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+			<xs:complexType name="ZwsStSrmRequest">
+				<xs:sequence>
+					<xs:element name="MessageHeader"
+						type="tns:ZwsStMessageHeader" />
+					<xs:element name="Srm" type="tns:ZwsTtSrm" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ZwsStSrm">
+				<xs:sequence>
+					<xs:element name="Sequence" type="xs:int" />
+					<xs:element name="SapDocumentLineNo" type="xs:string" />
+					<xs:element name="HU" type="xs:int" />
+					<xs:element name="ItemCode" type="xs:string" />
+					<xs:element name="ResultQty" type="xs:int" />
+					<xs:element name="Uom" type="xs:string" />
+					<xs:element name="UserId" type="xs:string" />
+					<xs:element name="ResultDate">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="10" />
+								<xs:pattern value="\d\d\d\d-\d\d-\d\d" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="ResultTime">
+						<xs:simpleType>
+							<xs:restriction base="xs:time">
+								<xs:pattern value="[0-9]{2}:[0-9]{2}:[0-9]{2}" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="LocationNo" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ZwsStMessageHeader">
+				<xs:sequence>
+					<xs:element name="MsgId" type="xs:string" />
+					<xs:element name="SapDocNo" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ZwsStSrmResponse">
+				<xs:sequence>
+					<xs:element name="MessageHeader"
+						type="tns:ZwsStResultMessageHeader" />
+					<xs:element name="ResponseMessageHeader"
+						type="tns:ZwsStResponseMessageHeader" />
+					<xs:element name="ResponseMessage"
+						type="tns:ZwsTtResponseMessage" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ZwsStResponseMessageHeader">
+				<xs:sequence>
+					<xs:element name="ResponseCode" type="xs:string" />
+					<xs:element name="ResponseDescription" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ZwsStResultMessageHeader">
+				<xs:sequence>
+					<xs:element name="MsgId" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ZwsStResponseMessage">
+				<xs:sequence>
+					<xs:element name="Sequence" type="xs:int" />
+					<xs:element name="ResponseCode" type="xs:string" />
+					<xs:element name="ResponseDescription" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ZwsTtSrm">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0"
+						name="item" type="tns:ZwsStSrm" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ZwsTtResponseMessage">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0"
+						name="item" type="tns:ZwsStResponseMessage" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZStorageResultMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="StorageResultMsgRequest"
+							type="tns:ZwsStSrmRequest" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ZStorageResultMessageResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="StorageResultMsgResponse"
+							type="tns:ZwsStSrmResponse" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="ZStorageResultMessage">
+		<wsdl:part name="parameters"
+			element="tns:ZStorageResultMessage" />
+	</wsdl:message>
+	<wsdl:message name="ZStorageResultMessageResponse">
+		<wsdl:part name="parameter"
+			element="tns:ZStorageResultMessageResponse" />
+	</wsdl:message>
+	<wsdl:portType name="SrmPort">
+		<wsdl:documentation>
+			<sapdoc:sapdoc xmlns:sapdoc="urn:sap:esi:documentation">
+				<sapdoc:docitem
+					docURL="http://s-sap-01.corp.al-test.com:8080/sap/bc/esdt/docu/sd_text?sap-client=100&amp;sd_name=ZWS_STORAGERESULTMESSAGE" />
+			</sapdoc:sapdoc>
+		</wsdl:documentation>
+		<wsdl:operation name="ZStorageResultMessage">
+			<wsdl:input message="tns:ZStorageResultMessage" />
+			<wsdl:output message="tns:ZStorageResultMessageResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SrmPortSoap11" type="tns:SrmPort">
+		<soap:binding
+			transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+		<wsdl:operation name="ZStorageResultMessage">
+			<soap:operation
+				soapAction="urn:sap-com:document:sap:soap:functions:mc-style:ZWS_StorageResultMessage:ZStorageResultMessageRequest"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="SrmPortService">
+		<wsdl:port binding="tns:SrmPortSoap11" name="SrmPortSoap11">
+			<!--
+			<soap:address location="http://localhost:8080/ws" />
+			-->
+			<soap:address
+				location="http://s-sap-01.corp.al-test.com:8080/sap/bc/srt/rfc/sap/zws_storageresultmessage/100/zws_storage_result_message/zbn_storage_result_message" />
+
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

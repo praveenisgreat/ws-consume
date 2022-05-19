@@ -1,0 +1,47 @@
+<!-- Request-->
+
+<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/'>
+  <soapenv:Body>
+    <ns1:ZStorageResultMessage xmlns:ns1='urn:sap-com:document:sap:soap:functions:mc-style'>
+      <StorageResultMsgRequest>
+        <MessageHeader>
+          <MsgId>132000</MsgId>
+          <SapDocNo>SAP000016132000</SapDocNo>
+        </MessageHeader>
+        <Srm>
+          <!-- from 0 to unbounded -->
+          <item>
+            <Sequence>1</Sequence>
+            <SapDocumentLineNo>0001</SapDocumentLineNo>
+            <HU>001</HU>
+            <ItemCode>001</ItemCode>
+            <ResultQty>99</ResultQty>
+            <Uom>100</Uom>
+            <UserId>23</UserId>
+			<!-- Max Length: 10, Pattern: \d\d\d\d-\d\d-\d\d -->
+            <ResultDate>2020-05-24</ResultDate>
+			<!-- Pattern: [0-9]{2}:[0-9]{2}:[0-9]{2} -->
+            <ResultTime>11:50:55</ResultTime>
+            <LocationNo>10</LocationNo>
+          </item>
+          <item>
+            <Sequence>1</Sequence>
+            <SapDocumentLineNo>0001</SapDocumentLineNo>
+            <HU>001</HU>
+            <ItemCode>001</ItemCode>
+            <ResultQty>99</ResultQty>
+            <Uom>100</Uom>
+            <UserId>23</UserId>
+			<!-- Max Length: 10, Pattern: \d\d\d\d-\d\d-\d\d -->
+            <ResultDate>2020-05-24</ResultDate>
+			<!-- Pattern: [0-9]{2}:[0-9]{2}:[0-9]{2} -->
+            <ResultTime>11:50:55</ResultTime>
+            <LocationNo>10</LocationNo>
+          </item>
+        </Srm>
+      </StorageResultMsgRequest>
+    </ns1:ZStorageResultMessage>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+<!-- Response -->
