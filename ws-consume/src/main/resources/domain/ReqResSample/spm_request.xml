@@ -1,0 +1,31 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://server.webservice.wms7.daifuku.co.jp" xmlns:xsd="http://msg.webservice.wms7.daifuku.co.jp/xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:StoragePlanMessage>
+         <ser:spmHeader>
+            <xsd:msgId>SPM_20201109000001001</xsd:msgId>
+            <xsd:sapDocumentNo>SAP1</xsd:sapDocumentNo>
+         </ser:spmHeader>
+         <ser:spmDetail>
+            <xsd:batchNo>BATCH1</xsd:batchNo>
+            <xsd:deleteFlag></xsd:deleteFlag>
+            <xsd:expiryDate>31122021</xsd:expiryDate>
+            <xsd:hu>1234</xsd:hu>
+            <xsd:itemCode>ITEM1</xsd:itemCode>
+            <xsd:planQty>100</xsd:planQty>
+            <xsd:sapDocumentLineNo>1</xsd:sapDocumentLineNo>
+            <xsd:seqNo>1</xsd:seqNo>
+         </ser:spmDetail>
+         <ser:spmDetail>
+            <xsd:batchNo>BATCH2</xsd:batchNo>
+            <xsd:deleteFlag></xsd:deleteFlag>
+            <xsd:expiryDate>31122021</xsd:expiryDate>
+            <xsd:hu>1234</xsd:hu>
+            <xsd:itemCode>ITEM2</xsd:itemCode>
+            <xsd:planQty>100</xsd:planQty>
+            <xsd:sapDocumentLineNo>2</xsd:sapDocumentLineNo>
+            <xsd:seqNo>2</xsd:seqNo>
+         </ser:spmDetail>
+      </ser:StoragePlanMessage>
+   </soapenv:Body>
+</soapenv:Envelope>
